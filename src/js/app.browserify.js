@@ -1,18 +1,18 @@
 // Vendor libraries
 // jQuery
-window.$ = window.jQuery = require('jquery');
+window.$ = window.jQuery = require('jquery')
 
 // Tether (required by Bootstrap 4)
-window.Tether = require('tether');
+window.Tether = require('tether')
 
 // Bootstrap 4
-require('bootstrap');
+require('bootstrap')
 
-// AdminPlus Lite
-var BootstrapLayout = require('bootstrap-layout');
+// Simplebar.js
+require('simplebar/dist/simplebar.min')
 
-// Initialize Sidebars
-BootstrapLayout.Sidebar.init();
+// Bootstrap Layout
+require('bootstrap-layout')
 
-// Initialize Scrollbars
-BootstrapLayout.Scrollable();
+// Bootstrap Layout Scrollable
+require('bootstrap-layout-scrollable')

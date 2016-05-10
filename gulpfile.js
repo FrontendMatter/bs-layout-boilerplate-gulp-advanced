@@ -13,6 +13,10 @@ var __SOURCEMAPS = true;
 var __CLEAN = true;
 // minify .css and .js files
 var __MINIFY = true;
+// copy vendor assets from node_modules/
+var __VENDOR_ASSETS = [
+	'simplebar/dist/simplebar.css'
+];
 
 ///////////
 // PATHS //
@@ -35,6 +39,7 @@ var __WATCH_BROWSERIFY = __SRC_BROWSERIFY;
 var __DIST = './dist';
 var __DIST_JS = __DIST + '/js';
 var __DIST_CSS = __DIST + '/css';
+var __DIST_VENDOR = __DIST + '/vendor';
 
 // CLEAN PATHS
 // clean Browserify bundles
@@ -48,6 +53,7 @@ var __CLEAN_BROWSERIFY = [
 	__DIST_JS + '/**/**.browserify.min.js.map'
 ];
 var __CLEAN_CSS = __DIST_CSS;
+var __CLEAN_VENDOR = __DIST_VENDOR;
 
 /////////////////
 // CLEAN TASKS //
@@ -230,6 +236,20 @@ gulp.task('browserify:watch', ['watch:set'], function () {
 	gulp.watch(__WATCH_BROWSERIFY, ['browserify']);
 });
 
+////////////////////////
+// COPY VENDOR ASSETS //
+////////////////////////
+
+gulp.task('vendor:clean', function (cb) {
+	if (!__CLEAN) { return cb() }
+	del(__CLEAN_VENDOR).then(function () { cb() });
+});
+
+gulp.task('copy:vendor', ['vendor:clean'], function () {
+	return gulp.src(__VENDOR_ASSETS, { cwd: 'node_modules/' })
+		.pipe(gulp.dest(__DIST_VENDOR));
+});
+
 /////////////
 // GENERAL //
 /////////////
@@ -245,4 +265,4 @@ gulp.task('watch:set', function (cb) {
 gulp.task('watch', ['sass:watch', 'browserify:watch']);
 
 // Default
-gulp.task('default', ['sass', 'browserify']);
+gulp.task('default', ['sass', 'browserify', 'copy:vendor']);

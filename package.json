@@ -1,7 +1,7 @@
 {
   "name": "bs-layout-boilerplate-gulp-advanced",
-  "version": "1.1.1",
-  "description": "Advanced gulp workflow using bootstrap-layout",
+  "version": "1.1.0",
+  "description": "Advanced gulp boilerplate for Bootstrap Layout",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "surge --project ./dist"
@@ -10,9 +10,11 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "4.0.0-alpha.2",
-    "bootstrap-layout": "1.0.0-alpha.5",
+    "bootstrap-layout": "1.0.0-alpha.7",
+    "bootstrap-layout-scrollable": "^1.0.1",
     "jquery": "^2.2.0",
     "sass-md-colors": "^1.0.0",
+    "simplebar": "github:grsmto/simplebar",
     "tether": "^1.2.0"
   },
   "devDependencies": {
